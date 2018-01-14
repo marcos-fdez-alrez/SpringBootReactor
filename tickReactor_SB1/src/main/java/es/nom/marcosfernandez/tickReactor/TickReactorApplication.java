@@ -16,7 +16,7 @@ import reactor.bus.EventBus;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages="es.nom.marcosfernandez.tickReactor")
-@Import({es.nom.marcosfernandez.tickReactor.config.Config.class,es.nom.marcosfernandez.tickReactor.config.MongoConfig.class})
+@Import({es.nom.marcosfernandez.tickReactor.config.Config.class})
 public class TickReactorApplication implements CommandLineRunner {
 	
 	@Autowired
