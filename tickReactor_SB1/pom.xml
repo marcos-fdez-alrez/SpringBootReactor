@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>es.nom.marcosfernandez</groupId>
+	<artifactId>tickReactor</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>tickReactor</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.9.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-bus</artifactId>
+        </dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.16</version>
+		</dependency>
+		
+		<!-- MONGO DB -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<plugin>
+    <groupId>com.github.joelittlejohn.embedmongo</groupId>
+    <artifactId>embedmongo-maven-plugin</artifactId>
+    <version>0.1.9</version>
+    <executions>
+        <execution>
+            <id>start</id>
+            <goals>
+                <goal>start</goal>
+            </goals>
+            <configuration>
+                <port>27017</port> <!-- optional, default 27017 -->
+                <randomPort>true</randomPort> <!-- optional, default is false, if true allocates a random port and overrides embedmongo.port -->
+                <version>2.0.4</version>  <!-- optional, default 2.2.1 -->
+                <databaseDirectory>/tmp/</databaseDirectory>  <!-- optional, default is a new dir in java.io.tmpdir -->
+                <logging>file</logging> <!-- optional (file|console|none), default console -->
+                <logFile>${project.build.directory}/myfile.log</logFile> <!-- optional, can be used when logging=file, default is ./embedmongo.log -->
+                <logFileEncoding>utf-8</logFileEncoding> <!-- optional, can be used when logging=file, default is utf-8 -->
+<!--                 <proxyHost>myproxy.company.com</proxyHost>  optional, default is none -->
+<!--                 <proxyPort>8080</proxyPort>  optional, default 80 -->
+<!--                 <proxyUser>joebloggs</proxyUser>  optional, default is none -->
+<!--                 <proxyPassword>pa55w0rd</proxyPassword>  optional, default is none -->
+                <bindIp>127.0.0.1</bindIp> <!-- optional, default is to listen on all interfaces -->
+            </configuration>
+        </execution>
+        <execution>
+            <id>stop</id>
+            <goals>
+                <goal>stop</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+	</build>
+
+
+</project>
